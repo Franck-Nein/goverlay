@@ -12,7 +12,7 @@ jobs:
 
     - name: Install Lazarus
       run: |
-        echo -e "\ndeb http://cz.archive.ubuntu.com/ubuntu jammy main universe" >> /etc/apt/sources.list
+        echo -e "\ndeb http://cz.archive.ubuntu.com/ubuntu jammy main universe" | sudo tee -a /etc/apt/sources.list
         sudo apt-get update
         sudo apt-get install -y mangohud lazarus libqt5pas-dev
         lazbuild --build-ide= --add-package lazopenglcontext
