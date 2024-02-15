@@ -1,0 +1,27 @@
+name: Build GOverlay
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Lazarus
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y lazarus libqt5pas-dev
+        lazbuild --build-ide= --add-package lazopenglcontext
+        
+    - name: Build GOverlay
+      run: |
+        make
+
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: goverlay-artifacts
+        path: goverlay  # Change this path to the directory where your artifacts are generated
