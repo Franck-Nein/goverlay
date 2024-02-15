@@ -15,6 +15,15 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y lazarus libqt5pas-dev mangohud
         lazbuild --build-ide= --add-package lazopenglcontext
+
+    - name: c?
+      run: |
+        wget https://musl.libc.org/releases/musl-1.2.4.tar.gz
+        tar -xzvf musl-1.2.4.tar.gz
+        cd musl-1.2.4
+        ./configure && make
+        sudo make install
+        cd ..
         
     - name: Build GOverlay
       run: |
