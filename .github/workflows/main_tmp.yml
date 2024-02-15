@@ -14,6 +14,7 @@ jobs:
       run: |
         echo -e "\ndeb http://cz.archive.ubuntu.com/ubuntu jammy main universe" | sudo tee -a /etc/apt/sources.list
         sudo apt-get update
+        sudo apt install lcl-2.2
         sudo apt-get install -y lazarus-2.2
         sudo apt-get install -y libqt5pas-dev
         sudo apt-get install -y mangohud
