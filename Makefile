@@ -1,4 +1,4 @@
-prefix = /usr/local
+prefix = /usr/local/musl
 bindir = /bin
 libexecdir = /libexec
 datadir = /share
