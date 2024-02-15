@@ -13,7 +13,7 @@ jobs:
     - name: Install Lazarus
       run: |
         sudo apt-get update
-        sudo apt-get install -y vkbasalt lazarus libqt5pas-dev
+        sudo apt-get install -y mangohud vkbasalt lazarus libqt5pas-dev
 
     - name: Build GOverlay
       run: |
