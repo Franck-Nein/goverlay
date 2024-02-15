@@ -14,7 +14,9 @@ jobs:
       run: |
         echo -e "\ndeb http://cz.archive.ubuntu.com/ubuntu jammy main universe" | sudo tee -a /etc/apt/sources.list
         sudo apt-get update
-        sudo apt-get install -y mangohud lazarus-2.2 lcl-2.2 libqt5pas-dev
+        sudo apt-get install -y lazarus-2.2
+        sudo apt-get install -y libqt5pas-dev
+        sudo apt-get install -y mangohud
         lazbuild --build-ide= --add-package lazopenglcontext
         
     - name: Build GOverlay
