@@ -1,0 +1,20 @@
+name: Lazarus Test
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Lazarus
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y lazarus
+
+    - name: Test1
+      run: |
+        lazbuild --build-ide= --add-package lazopenglcontext
