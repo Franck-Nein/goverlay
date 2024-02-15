@@ -13,7 +13,21 @@ jobs:
     - name: Install Lazarus
       run: |
         sudo apt-get update
-        sudo apt-get install -y mangohud vkbasalt lazarus libqt5pas-dev
+        sudo apt-get install -y lazarus libqt5pas-dev
+
+    - name: Build MangoHud tools
+      run: |
+          sudo apt update
+          sudo apt install gcc-multilib g++-multilib ninja-build python3-setuptools python3-wheel mesa-common-dev libxnvctrl-dev libdbus-1-dev python3-numpy python3-matplotlib unzip
+          sudo pip3 install 'meson>=0.60' mako
+          git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git
+          cd MangoHud
+          wget https://github.com/KhronosGroup/glslang/releases/download/SDK-candidate-26-Jul-2020/glslang-master-linux-Release.zip
+          unzip glslang-master-linux-Release.zip bin/glslangValidator
+          sudo install -m755 bin/glslangValidator /usr/local/bin/
+          ./build.sh build
+          ./build.sh install
+          cd ..
 
     - name: Build GOverlay
       run: |
