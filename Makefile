@@ -3,6 +3,9 @@ bindir = /bin
 libexecdir = /libexec
 datadir = /share
 
+CC = musl-gcc
+LDLIBS = -static
+
 all: goverlay start_goverlay.sh
 
 goverlay: *.pas *.lfm *.lrs goverlay.lpi goverlay.lpr goverlay.res goverlay.ico
