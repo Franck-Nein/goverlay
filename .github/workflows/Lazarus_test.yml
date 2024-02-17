@@ -34,7 +34,8 @@ jobs:
         echo "Setting up environment variables..."
         export PATH=$HOME/bin/FPC/fpc-3.2.2/bin:$PATH
         echo "Testing Free Pascal Compiler installation..."
-        $HOME/bin/FPC/fpc-3.2.2/bin/fpc -iV  # trivial test
+        cd && tree
+        ./bin/FPC/fpc-3.2.2/bin/fpc -iV  # trivial test
 
 
     - name: build lazarus
