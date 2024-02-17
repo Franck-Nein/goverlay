@@ -10,10 +10,31 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install Lazarus
+    - name: Set up Free Pascal Compiler
       run: |
-        sudo apt-get update
-        sudo apt-get install -y lazarus libqt5pas-dev libgl1-mesa-dev
+        cd $HOME
+        mkdir -p bin/FPC/Tars
+        mkdir bin/FPC/SRC
+        mkdir bin/FPC/fpc-3.2.2
+        cd bin/FPC/Tars
+        wget https://sourceforge.net/projects/freepascal/files/Source/3.2.2/fpc-3.2.2.source.tar.gz
+        wget https://sourceforge.net/projects/freepascal/files/Linux/3.2.2/fpc-3.2.2.x86_64-linux.tar
+        tar xf fpc-3.2.2.x86_64-linux.tar
+        cd fpc-3.2.2.x86_64-linux
+        ./install.sh <<< $'\n'  # To accept all defaults without user input
+        cd ../../SRC
+        tar xzf ../Tars/fpc-3.2.2.source.tar.gz
+        echo "PATH=\"\$HOME/bin/FPC/fpc-3.2.2/bin\":\"\$PATH\"" >> ~/.bashrc
+        source ~/.bashrc
+        fpc -iV  # trivial test
+
+    - name: build lazarus
+      run: |
+        git clone --branch lazarus_2_2_0 https://gitlab.com/freepascal.org/lazarus/lazarus.git lazarus-main
+        cd lazarus-main
+        make clean
+        make bigide
+        make install
 
     - name: lazopenglcontext
       run: |
