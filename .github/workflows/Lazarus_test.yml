@@ -25,8 +25,7 @@ jobs:
         ./install.sh <<< $'\n'  # To accept all defaults without user input
         cd ../../SRC
         tar xzf ../Tars/fpc-3.2.2.source.tar.gz
-        echo "PATH=\"\$HOME/bin/FPC/fpc-3.2.2/bin\":\"\$PATH\"" >> ~/.bashrc
-        source ~/.bashrc
+        export PATH=$HOME/bin/FPC/fpc-3.2.2/bin:$PATH
         fpc -iV  # trivial test
 
     - name: build lazarus
