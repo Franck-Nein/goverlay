@@ -12,6 +12,7 @@ jobs:
 
     - name: Set up Free Pascal Compiler
       run: |
+        sudo apt-get install binutils make gcc
         cd $HOME
         mkdir -p bin/FPC/Tars
         mkdir bin/FPC/SRC
