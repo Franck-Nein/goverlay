@@ -25,14 +25,10 @@ jobs:
         git clone --branch lazarus_2_2_0 https://gitlab.com/freepascal.org/lazarus/lazarus.git lazarus-main
         cd lazarus-main
         sudo apt-get install lazarus
-        sudo apt-get remove lazarus
-        make clean all
-        echo "make clean all"
-        sudo make install
-        echo "make clean bigide"
-        sed -i 's/ -vm6058,3057//g' components/fpdebug/Makefile.compiled components/fpdebug/Makefile components/fpdebug/Makefile.fpc
-        sed -i 's/ -vm6058,3123//g' components/lazdebuggers/lazdebuggerfp/Makefile.compiled components/lazdebuggers/lazdebuggerfp/Makefile components/lazdebuggers/lazdebuggerfp/Makefile.fpc
+        echo "Build asdadasd pre"
         make clean bigide
+        echo "Build asdadasd"
+        sudo apt-get remove lazarus
         sudo make install
 
     - name: lazopenglcontext
