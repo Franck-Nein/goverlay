@@ -10,15 +10,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install Lazarus
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y lazarus libqt5pas-dev libgl1-mesa-dev
-
-    - name: lazopenglcontext
-      run: |
-        lazbuild --build-ide= --add-package lazopenglcontext
-
     - name: Build MangoHud
       run: |
           sudo apt update
@@ -33,12 +24,8 @@ jobs:
           ./build.sh install
           cd ..
 
-    - name: Build GOverlay
-      run: |
-        make
-
     - name: Archive artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: goverlay-artifacts
-        path: goverlay  # Change this path to the directory where your artifacts are generated
+        name: MangoHud-artifacts
+        path: goverlay/MangoHud  # Change this path to the directory where your artifacts are generated
