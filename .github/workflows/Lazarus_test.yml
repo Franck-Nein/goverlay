@@ -19,11 +19,13 @@ jobs:
       run: |
         lazbuild --build-ide= --add-package lazopenglcontext
 
-    - name: MangoHud
+    - name: MangoHud deps
       run: |
           sudo apt update
           sudo apt install gcc-multilib g++-multilib ninja-build python3-setuptools python3-wheel mesa-common-dev libxnvctrl-dev libdbus-1-dev python3-numpy python3-matplotlib unzip
           sudo pip3 install 'meson>=0.60' mako
+    - name: MangoHud
+      run: |
           wget https://github.com/Franck-Nein/goverlay/releases/download/Ignore(Mangohud)/MangoHud-artifacts.zip
           unzip MangoHud-artifacts.zip -d MangoHud
           cd MangoHud
