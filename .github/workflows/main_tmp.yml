@@ -13,7 +13,7 @@ jobs:
     - name: Install Lazarus
       run: |
         sudo apt-get update
-        sudo apt-get install -y lazarus libqt5pas-dev mangohud
+        sudo apt-get install -y lazarus libqt5pas-dev mangohud libgl1-mesa-dev
         lazbuild --build-ide= --add-package lazopenglcontext freetypelaz
 
     - name: c?
