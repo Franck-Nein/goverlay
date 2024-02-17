@@ -24,9 +24,11 @@ jobs:
       run: |
         git clone --branch lazarus_2_2_0 https://gitlab.com/freepascal.org/lazarus/lazarus.git lazarus-main
         cd lazarus-main
-        make clean
-        make bigide
-        make install
+        sudo apt-get install lazarus
+        sudo apt-get remove lazarus
+        make clean bigide
+        echo "make clean bigide"
+        sudo make install
 
     - name: lazopenglcontext
       run: |
