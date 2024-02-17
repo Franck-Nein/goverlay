@@ -27,7 +27,7 @@ jobs:
         
     - name: Build GOverlay
       run: |
-        make
+        sudo make
 
     - name: Archive artifacts
       uses: actions/upload-artifact@v2
