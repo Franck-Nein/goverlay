@@ -1,4 +1,4 @@
-name: Lazarus Test
+name: MangoHud Test
 
 on: workflow_dispatch
 
