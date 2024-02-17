@@ -31,6 +31,7 @@ jobs:
         sudo make install
         echo "make clean bigide"
         sed -i 's/ -vm6058,3057//g' components/fpdebug/Makefile.compiled components/fpdebug/Makefile components/fpdebug/Makefile.fpc
+        sed -i 's/ -vm6058,3123//g' components/lazdebuggers/lazdebuggerfp/Makefile.compiled components/lazdebuggers/lazdebuggerfp/Makefile components/lazdebuggers/lazdebuggerfp/Makefile.fpc
         make clean bigide
         sudo make install
 
