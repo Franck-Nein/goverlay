@@ -14,7 +14,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y lazarus libqt5pas-dev mangohud libgl1-mesa-dev
-        lazbuild --build-ide= --add-package lazopenglcontext freetypelaz
+        sudo lazbuild --build-ide= --add-package lazopenglcontext freetypelaz
 
     - name: c?
       run: |
