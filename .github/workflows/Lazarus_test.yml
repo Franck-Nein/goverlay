@@ -27,7 +27,10 @@ jobs:
         sudo apt-get install lazarus
         sudo apt-get remove lazarus
         make clean all
+        echo "make clean all"
+        sudo make install
         echo "make clean bigide"
+        make clean bigide
         sudo make install
 
     - name: lazopenglcontext
