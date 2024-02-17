@@ -12,8 +12,13 @@ jobs:
 
     - name: Set up Free Pascal Compiler
       run: |
-        sudo apt-get install fpc -y
-
+        sudo apt-get install fpc
+        wget https://sourceforge.net/projects/freepascal/files/Source/3.2.2/fpc-3.2.2.source.tar.gz
+        tar xzf fpc-3.2.2.source.tar.gz
+        cd fpc-3.2.2
+        make all
+        sudo make install
+        
     - name: build lazarus
       run: |
         git clone --branch lazarus_2_2_0 https://gitlab.com/freepascal.org/lazarus/lazarus.git lazarus-main
