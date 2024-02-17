@@ -1,0 +1,44 @@
+name: Lazarus Test
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Lazarus
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y lazarus libqt5pas-dev libgl1-mesa-dev
+
+    - name: lazopenglcontext
+      run: |
+        lazbuild --build-ide= --add-package lazopenglcontext
+
+    - name: Build MangoHud
+      run: |
+          sudo apt update
+          sudo apt install gcc-multilib g++-multilib ninja-build python3-setuptools python3-wheel mesa-common-dev libxnvctrl-dev libdbus-1-dev python3-numpy python3-matplotlib unzip
+          sudo pip3 install 'meson>=0.60' mako
+          git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git
+          cd MangoHud
+          wget https://github.com/KhronosGroup/glslang/releases/download/SDK-candidate-26-Jul-2020/glslang-master-linux-Release.zip
+          unzip glslang-master-linux-Release.zip bin/glslangValidator
+          sudo install -m755 bin/glslangValidator /usr/local/bin/
+          ./build.sh build
+          ./build.sh install
+          cd ..
+
+    - name: Build GOverlay
+      run: |
+        make
+
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: goverlay-artifacts
+        path: goverlay  # Change this path to the directory where your artifacts are generated
