@@ -26,7 +26,7 @@ jobs:
         cd lazarus-main
         sudo apt-get install lazarus
         sudo apt-get remove lazarus
-        make clean bigide
+        make clean all
         echo "make clean bigide"
         sudo make install
 
