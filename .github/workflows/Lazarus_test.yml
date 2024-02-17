@@ -30,7 +30,7 @@ jobs:
         echo "make clean all"
         sudo make install
         echo "make clean bigide"
-        sed -i 's/ -vm6058,3057//g' components/fpdebug/Makefile.compiled components/fpdebug/Makefile
+        sed -i 's/ -vm6058,3057//g' components/fpdebug/Makefile.compiled components/fpdebug/Makefile components/fpdebug/Makefile.fpc
         make clean bigide
         sudo make install
 
